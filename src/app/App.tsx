@@ -249,7 +249,7 @@ const About = () => {
             className="prose dark:prose-invert max-w-none text-lg text-gray-600 dark:text-gray-400 space-y-6"
           >
             <p>
-              Hello! I'm Bernstain Fangon, an IT student and aspiring software developer with a strong passion for building web applications that are both beautiful and functionally robust. I believe in the power of minimalism—cutting through the noise to deliver clear, accessible user experiences.
+              Hello! I'm Bernstain Fangon, an IT student and aspiring Full Stack Developer with a strong passion for building web applications that are both beautiful and functionally robust. I believe in the power of minimalism—cutting through the noise to deliver clear, accessible user experiences.
             </p>
             <p>
               Currently, my focus is on modern frontend frameworks like React and Next.js, alongside backend technologies such as Node.js and PostgreSQL. I enjoy bridging the gap between design and engineering, ensuring that every pixel serves a purpose.
@@ -401,7 +401,7 @@ const Skills = () => {
     {
       title: "Tools & Other",
       icon: <Wrench className="mb-4" size={32} strokeWidth={1.5} />,
-      skills: ["Git & GitHub", "Docker", "Figma", "Vercel"]
+      skills: ["Git & GitHub", "Docker", "Figma", "Vercel", "EmailJS", "Gemini AI"]
     }
   ];
 
