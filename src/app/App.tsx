@@ -401,7 +401,7 @@ const Skills = () => {
     {
       title: "Tools & Other",
       icon: <Wrench className="mb-4" size={32} strokeWidth={1.5} />,
-      skills: ["Git & GitHub", "Docker", "Figma", "Vercel", "EmailJS", "Gemini AI"]
+      skills: ["Git & GitHub", "Docker", "Figma", "Vercel", "EmailJS", "Gemini AI", "CorelDRAW", "Adobe Photoshop", "Capcut"]
     }
   ];
 
