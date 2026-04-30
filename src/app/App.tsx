@@ -1,7 +1,12 @@
-import image_ef56bece561681b6584b3e8498798c16a85de5b6 from 'figma:asset/ef56bece561681b6584b3e8498798c16a85de5b6.png'
+import profileImage from '../assets/profile.png'
+import velvetRiotImage from '../assets/velvetriot.png'
+import studentSystemImage from '../assets/studentsystem.png'
+import sanPabloImage from '../assets/SPSWebsite.png'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import emailjs from '@emailjs/browser';
 import { 
+  Facebook,
   Github, 
   Linkedin, 
   Mail, 
@@ -182,7 +187,7 @@ const Hero = () => {
             <Button variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects <ArrowRight size={18} />
             </Button>
-            <Button variant="secondary" onClick={() => window.open('https://github.com', '_blank')}>
+            <Button variant="secondary" onClick={() => window.open('https://github.com/fangonbernstain566-collab', '_blank')}>
               <Github size={18} /> GitHub
             </Button>
           </motion.div>
@@ -235,7 +240,7 @@ const About = () => {
             className="mt-8 relative aspect-square max-w-sm rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
           >
             <ImageWithFallback 
-              src={image_ef56bece561681b6584b3e8498798c16a85de5b6} 
+              src={profileImage} 
               alt="Bernstain Fangon" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
@@ -257,11 +262,11 @@ const About = () => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 mt-8 border-t border-gray-200 dark:border-gray-800">
               <div>
-                <h4 className="text-4xl font-bold text-black dark:text-white mb-2">2+</h4>
+                <h4 className="text-4xl font-bold text-black dark:text-white mb-2">2</h4>
                 <p className="text-sm uppercase tracking-wider font-semibold">Years Coding</p>
               </div>
               <div>
-                <h4 className="text-4xl font-bold text-black dark:text-white mb-2">15+</h4>
+                <h4 className="text-4xl font-bold text-black dark:text-white mb-2">11</h4>
                 <p className="text-sm uppercase tracking-wider font-semibold">Projects</p>
               </div>
             </div>
@@ -330,9 +335,11 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
         </div>
         
         <div className="flex gap-4 mt-auto">
-          <a href={project.link} className="inline-flex items-center gap-1 text-sm font-semibold hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-            Live Demo <ExternalLink size={14} />
-          </a>
+          {project.link && (
+            <a href={project.link} className="inline-flex items-center gap-1 text-sm font-semibold hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+              Live Demo <ExternalLink size={14} />
+            </a>
+          )}
           <a href={project.github} className="inline-flex items-center gap-1 text-sm font-semibold hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
             Code <Github size={14} />
           </a>
@@ -345,29 +352,28 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
 const Projects = () => {
   const projects = [
     {
-      title: "Fintech Dashboard",
-      description: "A minimalist dashboard for tracking personal finances, featuring interactive charts, dark mode, and real-time data sync.",
-      image: "https://images.unsplash.com/photo-1772050137621-3cc42f49ccc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYWJzdHJhY3QlMjB3aXJlZnJhbWV8ZW58MXx8fHwxNzc3NTE3MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["React", "TypeScript", "Tailwind"],
-      link: "#",
-      github: "#"
+      title: "Velvet Riot Pro",
+      description: "A Web Based game that uses HTML5, CSS3, and JavaScript to create an immersive experience. Players navigate through a series of challenges, utilizing their problem-solving skills and quick reflexes to progress through the game.",
+      image: velvetRiotImage,
+      tags: ["HTML5", "CS3", "JavaScript", "Phaser Framework"],
+      github: "https://github.com/fangonbernstain566-collab/Velvet-Riot-Pro.git"
     },
     {
-      title: "Developer Tools CLI",
-      description: "Command-line interface built to automate standard scaffolding tasks. Focused on developer experience and speed.",
-      image: "https://images.unsplash.com/photo-1771061863061-8ffdddb28098?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwY29kaW5nJTIwc2NyZWVufGVufDF8fHx8MTc3NzUxNzAxNXww&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["Node.js", "Commander", "Chalk"],
-      link: "#",
-      github: "#"
+      title: "Polytechnic College of La Union Student Information System",
+      description: "A comprehensive student information system for managing academic records, grades, and student details.",
+      image: studentSystemImage,
+      tags: ["PHP", "PostgreSQL", "CSS", "JavaScript"],
+      github: "https://github.com/fangonbernstain566-collab/student-system-v2-SIS.git"
     },
     {
-      title: "Arch Studio Portfolio",
-      description: "A sleek, monochromatic portfolio website for an architecture firm showcasing their best works with smooth scroll interactions.",
-      image: "https://images.unsplash.com/photo-1612314577630-bafc881d211f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwbW9kZXJuJTIwZGV2aWNlJTIwbW9ja3VwfGVufDF8fHx8MTc3NzUxNzAxOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["Next.js", "Framer Motion", "CSS Modules"],
-      link: "#",
-      github: "#"
-    }
+      title: "San Pablo Seminary Baguio City Website",
+      description: "A modern, responsive website for San Pablo Seminary in Baguio City, showcasing their programs, events, and community initiatives. It is a comission work for the seminary to help them establish an online presence and provide information to prospective students and the community.",
+      image: sanPabloImage,
+      tags: ["HTML5", "CSS3", "JavaScript", "Vercel"],
+      link: "https://san-pablo-seminary-website.vercel.app/",
+      github: "https://github.com/fangonbernstain566-collab/San-Pablo-Seminary-Website.git"
+    },
+    
   ];
 
   return (
@@ -391,17 +397,17 @@ const Skills = () => {
     {
       title: "Frontend",
       icon: <MonitorSmartphone className="mb-4" size={32} strokeWidth={1.5} />,
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"]
+      skills: ["HTML5", "TailWind CSS", "JavaScript","TypeScript"]
     },
     {
       title: "Backend",
       icon: <Server className="mb-4" size={32} strokeWidth={1.5} />,
-      skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"]
+      skills: ["Node.js", "PHP", "PostgreSQL", "MySQL"]
     },
     {
       title: "Tools & Other",
       icon: <Wrench className="mb-4" size={32} strokeWidth={1.5} />,
-      skills: ["Git & GitHub", "Docker", "Figma", "Jest", "Vercel", "Linux CLI"]
+      skills: ["Git & GitHub", "Docker", "Figma", "Vercel"]
     }
   ];
 
@@ -439,22 +445,22 @@ const Skills = () => {
 const Experience = () => {
   const experiences = [
     {
-      role: "Frontend Developer Intern",
-      company: "TechNova Solutions",
-      date: "Jun 2023 - Present",
-      description: "Developing responsive UI components using React and Tailwind CSS. Improved overall site accessibility score by 25%."
+      role: "Junior Layout Artist and Tech Support",
+      company: "ACDC Cuts and Prints",
+      date: "Past",
+      description: "Assisted with print layouts, prepared production files, and provided technical support for daily operations."
     },
     {
-      role: "Freelance Web Developer",
-      company: "Self-Employed",
-      date: "Jan 2022 - May 2023",
-      description: "Designed and built custom websites for local businesses focusing on performance and minimalist design principles."
+      role: "Part-Time Tech Support and Editor",
+      company: "Pugad Adventure, Pugo, La Union",
+      date: "Current",
+      description: "Handled technical support tasks and edited photos and videos for promotional content and social media."
     },
     {
-      role: "B.Sc. Information Technology",
-      company: "State University",
-      date: "Sep 2020 - Expected 2024",
-      description: "Focusing on software engineering, database management, and human-computer interaction."
+      role: "3rd Year BS in Information Technology",
+      company: "Current Student",
+      date: "Current",
+      description: "Studying software development, databases, networking, and modern web technologies."
     }
   ];
 
@@ -491,6 +497,40 @@ const Experience = () => {
 };
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    emailjs.init('quY2gria2eJ02P36A'); // Replace with your EmailJS public key
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await emailjs.send('service_u7tzs57', 'template_t00hs4r', {
+        to_email: 'fangobernstain566@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      });
+      setStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus(''), 3000);
+    } catch (error) {
+      setStatus('Failed to send message. Please try again.');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 md:py-32 border-t border-gray-200 dark:border-gray-800">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -500,14 +540,16 @@ const Contact = () => {
             subtitle="I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!" 
           />
           <div className="space-y-6">
-            <a href="mailto:hello@example.com" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
-              <Mail className="text-gray-400" /> hello@example.com
+            <a href="mailto:fangobernstain566@gmail.com" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
+              <Mail className="text-gray-400" /> Gmail
             </a>
-            <a href="#" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
-              <Linkedin className="text-gray-400" /> LinkedIn Profile
-            </a>
-            <a href="#" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
+          
+          <a href="https://github.com/fangonbernstain566-collab" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
               <Github className="text-gray-400" /> GitHub Profile
+            </a>
+
+            <a href="https://www.facebook.com/bernstain.fangon.2025" className="flex items-center gap-4 text-lg hover:underline underline-offset-4">
+              <Facebook className="text-gray-400" /> Facebook Profile
             </a>
           </div>
         </div>
@@ -519,14 +561,17 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="bg-gray-50 dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 rounded-2xl p-8"
         >
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
               <input 
                 type="text" 
                 id="name" 
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
                 placeholder="John Doe"
+                required
               />
             </div>
             <div>
@@ -534,21 +579,32 @@ const Contact = () => {
               <input 
                 type="email" 
                 id="email" 
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
                 placeholder="john@example.com"
+                required
               />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
               <textarea 
                 id="message" 
+                value={formData.message}
+                onChange={handleChange}
                 rows={4}
                 className="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
                 placeholder="Your message here..."
+                required
               ></textarea>
             </div>
-            <Button variant="primary" className="w-full">
-              Send Message
+            {status && (
+              <p className={`text-sm font-medium ${status.includes('success') ? 'text-green-600' : 'text-red-600'}`}>
+                {status}
+              </p>
+            )}
+            <Button variant="primary" className="w-full" disabled={loading}>
+              {loading ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </motion.div>
@@ -560,15 +616,21 @@ const Contact = () => {
 const Footer = () => (
   <footer className="py-8 border-t border-gray-200 dark:border-gray-800">
     <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p className="text-sm text-gray-500 font-mono">
-        © {new Date().getFullYear()} Bernstain Fangon. All rights reserved.
-      </p>
+      <div>
+        <p className="text-sm text-gray-500 font-mono">
+          © {new Date().getFullYear()} Bernstain Fangon. All rights reserved.
+        </p>
+        <p className="text-sm text-gray-500 font-mono">
+          Powered by Vercel, built with React and Tailwind CSS.
+        </p>
+      </div>
+
       <div className="flex gap-4">
-        <a href="#" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+        <a href="https://github.com/fangonbernstain566-collab" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
           <Github size={20} />
         </a>
-        <a href="#" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
-          <Linkedin size={20} />
+        <a href="https://www.facebook.com/bernstain.fangon" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+          <Facebook size={20} />
         </a>
       </div>
     </div>
