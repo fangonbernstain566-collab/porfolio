@@ -347,7 +347,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Velvet Riot Pro",
-      description: "A Web Based game that uses HTML5, CSS3, and JavaScript to create an immersive experience. Players navigate through a series of challenges, utilizing their problem-solving skills and quick reflexes to progress through the game.",
+      description: "A Web Based game that uses HTML5, CSS3, and JavaScript to create an immersive experience. Players navigate through a series of challenges, utilizing their problem-solving skills and quick reflexes to progress through the game. This also the entry project for the 2024 Game Jam organized by Github and Itch.io.",
       image: velvetRiotImage,
       tags: ["HTML5", "CS3", "JavaScript", "Phaser Framework"],
       github: "https://github.com/fangonbernstain566-collab/Velvet-Riot-Pro.git"
@@ -454,8 +454,9 @@ const Experience = () => {
       role: "3rd Year BS in Information Technology",
       company: "Current Student",
       date: "Current",
-      description: "Studying software development, databases, networking, and modern web technologies."
-    }
+      description: "Studying System Development, databases, networking, and modern web technologies."
+    },
+    
   ];
 
   return (
