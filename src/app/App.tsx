@@ -608,6 +608,68 @@ const Contact = () => {
   );
 };
 
+const LoadingScreen = ({ isVisible, isSuccessVisible }: { isVisible: boolean, isSuccessVisible: boolean }) => (
+  <motion.div
+    initial={{ opacity: 1 }}
+    animate={{ opacity: isVisible || isSuccessVisible ? 1 : 0 }}
+    transition={{ duration: 0.5 }}
+    className={`fixed inset-0 bg-white dark:bg-[#020202] z-50 flex items-center justify-center ${!isVisible && !isSuccessVisible && 'pointer-events-none'}`}
+  >
+    <div className="flex flex-col items-center justify-center gap-6">
+      {isVisible ? (
+        <>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-12 h-12 border-2 border-gray-300 dark:border-gray-700 border-t-black dark:border-t-white rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-sm font-mono text-gray-600 dark:text-gray-400"
+          >
+            Loading<motion.span animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>.</motion.span>
+          </motion.p>
+        </>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center justify-center gap-6"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 0.5 }}
+            className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center"
+          >
+            <motion.svg
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            </motion.svg>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg font-semibold text-black dark:text-white"
+          >
+            Loading Successful
+          </motion.p>
+        </motion.div>
+      )}
+    </div>
+  </motion.div>
+);
+
 const Footer = () => (
   <footer className="py-8 border-t border-gray-200 dark:border-gray-800">
     <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -636,6 +698,8 @@ const Footer = () => (
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSuccessVisible, setIsSuccessVisible] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth');
@@ -646,8 +710,26 @@ export default function App() {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+      setIsSuccessVisible(true);
+    }, 2000);
+
+    const successTimer = setTimeout(() => {
+      setIsSuccessVisible(false);
+    }, 3500);
+
+    return () => {
+      clearTimeout(loadingTimer);
+      clearTimeout(successTimer);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#020202] text-black dark:text-white transition-colors duration-300 font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black">
+      <LoadingScreen isVisible={isLoading} isSuccessVisible={isSuccessVisible} />
+      
       {/* Subtle Dotted Background Pattern */}
       <div 
         className="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-20 transition-opacity duration-300"
