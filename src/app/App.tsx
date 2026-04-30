@@ -1,7 +1,7 @@
-import profileImage from "../assets/profile.png";
-import velvetRiotImage from "../assets/velvetriot.png";
-import studentSystemImage from "../assets/StudentSystem.png";
-import sanPabloImage from "../assets/SPSWebsite.png";
+import profileImage from "@/assets/profile.png";
+import velvetRiotImage from "@/assets/velvetriot.png";
+import studentSystemImage from '@/assets/StudentSystem.png';
+import sanPabloImage from '@/assets/SPSWebsite.png';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
@@ -152,81 +152,61 @@ const Navbar = ({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: (v:
 const Hero = () => {
   return (
     <section className="pt-40 pb-20 md:pt-52 md:pb-32 min-h-screen flex items-center">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-mono mb-6">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Available for work
-            </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]">
-              Bernstain <br />
-              <span className="text-gray-400 dark:text-gray-500">Fangon.</span>
-            </h1>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-lg"
-          >
-            IT Student & Developer. I build accessible, responsive, and minimalist digital experiences. Focused on clean code and robust architecture.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap gap-4 pt-4"
-          >
-            <Button variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Projects <ArrowRight size={18} />
-            </Button>
-            <Button variant="secondary" onClick={() => window.open('https://github.com/fangonbernstain566-collab', '_blank')}>
-              <Github size={18} /> GitHub
-            </Button>
-          </motion.div>
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="lg:col-span-5 relative"
+      <div className="w-full flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center"
         >
-          {/* Minimalist Abstract Graphic */}
-          <div className="aspect-square relative w-full max-w-md mx-auto">
-            <div className="absolute inset-0 border border-gray-200 dark:border-gray-800 rounded-3xl rotate-3 transition-transform hover:rotate-6 duration-500" />
-            <div className="absolute inset-0 border border-gray-300 dark:border-gray-700 rounded-3xl -rotate-3 transition-transform hover:-rotate-6 duration-500" />
-            <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900 rounded-3xl flex items-center justify-center overflow-hidden">
-               <div className="w-full h-full relative p-8 flex flex-col justify-between">
-                  <div className="flex justify-between">
-                    <div className="w-8 h-8 rounded-full border-2 border-black dark:border-white" />
-                    <div className="w-8 h-8 rounded-none border-2 border-black dark:border-white" />
-                  </div>
-                  <div className="space-y-4 w-full">
-                    <div className="h-2 w-3/4 bg-black/20 dark:bg-white/20 rounded" />
-                    <div className="h-2 w-1/2 bg-black/20 dark:bg-white/20 rounded" />
-                    <div className="h-2 w-full bg-black/20 dark:bg-white/20 rounded" />
-                  </div>
-                  <div className="flex justify-end">
-                    <div className="w-12 h-12 rounded-full border border-dashed border-black dark:border-white animate-spin-slow" style={{ animationDuration: '10s' }} />
-                  </div>
-               </div>
-            </div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-mono mb-6">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            Available for work
           </div>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]">
+            Bernstain <span className="text-gray-400 dark:text-gray-500">Fangon.</span>
+          </h1>
+        </motion.div>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-lg mt-8"
+        >
+          IT Student & Developer. I build accessible, responsive, and minimalist digital experiences. Focused on clean code and robust architecture.
+        </motion.p>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-4 mt-8"
+        >
+          <Button variant="primary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            View Projects <ArrowRight size={18} />
+          </Button>
+          <Button variant="secondary" onClick={() => window.open('https://github.com', '_blank')}>
+            <Github size={18} /> GitHub
+          </Button>
         </motion.div>
       </div>
     </section>
   );
 };
 
+
 const About = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    setMousePosition({ x, y });
+  };
+
   return (
     <section id="about" className="py-20 md:py-32 border-t border-gray-200 dark:border-gray-800">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -237,13 +217,27 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-8 relative aspect-square max-w-sm rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+            className="mt-8 relative aspect-square max-w-sm rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 group"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => { setIsHovering(false); setMousePosition({ x: 0, y: 0 }); }}
+            onMouseMove={handleMouseMove}
           >
-            <ImageWithFallback 
-              src={profileImage} 
-              alt="Bernstain Fangon" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-            />
+            <motion.div
+              animate={{ 
+                x: isHovering ? mousePosition.x * -20 : 0, 
+                y: isHovering ? mousePosition.y * -20 : 0,
+                scale: isHovering ? 1.1 : 1
+              }}
+              transition={{ type: "spring", stiffness: 150, damping: 20 }}
+              className="w-full h-full"
+            >
+              <ImageWithFallback 
+                src={profileImage} 
+                alt="Bernstain Fangon" 
+                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-black/10 dark:bg-black/40 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
           </motion.div>
         </div>
         <div className="lg:col-span-7">
