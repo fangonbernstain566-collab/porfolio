@@ -1,11 +1,27 @@
+# IT Portfolio UI – Bernstain Fangon
 
-  # Minimalist IT Portfolio UI
+A modern, black-and-white themed IT portfolio interface designed with a strong focus on simplicity, responsiveness, and clean UI/UX principles. This project is based on a Figma design and implemented as a functional web application.
 
-  This is a code bundle for Minimalist IT Portfolio UI. The original project is available at https://www.figma.com/design/kS7CV0z1jPhtrsSgaONFTd/Minimalist-IT-Portfolio-UI.
+## 🎨 Design Source
+Original Figma file:  
+https://www.figma.com/design/kS7CV0z1jPhtrsSgaONFTd/Minimalist-IT-Portfolio-UI
 
-  ## Running the code
+## 🚀 Features
+- Clean black & white UI theme
+- Fully responsive design (desktop, tablet, mobile)
+- Structured and readable layout
+- Interactive components (buttons, navigation, sections)
+- Organized and scalable codebase
 
-  Run `npm i` to install the dependencies.
+## 🛠️ Tech Stack
+- HTML5 / CSS3
+- JavaScript (ES6+)
+- [Specify if used: React / Vue / etc.]
+- [Specify styling: Tailwind CSS / SCSS / etc.]
 
-  Run `npm run dev` to start the development server.
-  
+## 📦 Installation
+
+Install dependencies:
+
+```bash
+npm install

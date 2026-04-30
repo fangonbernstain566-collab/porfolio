@@ -1,6 +1,6 @@
-import profileImage from '../assets/profile.png'
-import velvetRiotImage from '../assets/velvetriot.png'
-import studentSystemImage from '../assets/studentsystem.png'
+import profileImage from 'src/assets/profile.png'
+import velvetRiotImage from '/assets/velvetriot.png'
+import studentSystemImage from '../assets/StudentSystem.png'
 import sanPabloImage from '../assets/SPSWebsite.png'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
