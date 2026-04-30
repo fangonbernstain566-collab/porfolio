@@ -2,6 +2,7 @@ import profileImage from "../assets/profile.png";
 import velvetRiotImage from "../assets/velvetriot.png";
 import studentSystemImage from "../assets/StudentSystem.png";
 import sanPabloImage from "../assets/SPSWebsite.png";
+import { Analytics } from "@vercel/analytics/react";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
