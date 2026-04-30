@@ -1,7 +1,7 @@
-import profileImage from "@/assets/profile.png";
-import velvetRiotImage from "@/assets/velvetriot.png";
-import studentSystemImage from '@/assets/StudentSystem.png';
-import sanPabloImage from '@/assets/SPSWebsite.png';
+import profileImage from "../assets/profile.png";
+import velvetRiotImage from "../assets/velvetriot.png";
+import studentSystemImage from "../assets/StudentSystem.png";
+import sanPabloImage from "../assets/SPSWebsite.png";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import emailjs from '@emailjs/browser';
@@ -347,7 +347,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Velvet Riot Pro",
-      description: "A Web Based game that uses HTML5, CSS3, and JavaScript to create an immersive experience. Players navigate through a series of challenges, utilizing their problem-solving skills and quick reflexes to progress through the game. This also the entry project for the 2024 Game Jam organized by Github and Itch.io.",
+      description: "A Web Based game that uses HTML5, CSS3, and JavaScript to create an immersive experience. Players navigate through a series of challenges, utilizing their problem-solving skills and quick reflexes to progress through the game. This also the entry project for the 2026 Game Jam organized by Github and Itch.io.",
       image: velvetRiotImage,
       tags: ["HTML5", "CS3", "JavaScript", "Phaser Framework"],
       github: "https://github.com/fangonbernstain566-collab/Velvet-Riot-Pro.git"
@@ -660,7 +660,7 @@ const LoadingScreen = ({ isVisible, isSuccessVisible }: { isVisible: boolean, is
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg font-semibold text-black dark:text-white"
+            className="text-sm font-mono text-black dark:text-gray-400"
           >
             Loading Successful
           </motion.p>
@@ -700,6 +700,26 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+
+    if (window.location.hash) {
+      const cleanUrl = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, '', cleanUrl);
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth');
